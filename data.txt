@@ -1,0 +1,5 @@
+Alphard|Chandra|Perempuan|2022-07-22|2022-07-23|bantul
+Toyota FT86|Chandra|Laki-Laki|2002-01-25|2002-02-20|Bantul
+Toyota FT86|Rahmad|Perempuan|2022-07-22|2022-07-23|Jogja
+Toyota FT86|Rahmad|Perempuan|2022-07-22|2022-07-23|Jogja
+Toyota FT86|j|Laki-Laki|1120-01-21|2022-01-22|lama

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Booking Online</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <style>
+            body{
+                background-color: #999;
+            }
+            .judul{
+                margin-top: 30px;
+                width: 100%;
+                height: 40px;
+                background-color: #000;
+                position: relative;
+                text-align: center;
+                font-family: sans-serif;
+                font-style: italic;
+                font-size: 25px;
+                color: #6c5ce7;
+            }
+            .product-grid{
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                border: 2px solid #000;
+                background-color: #fff;
+            }
+            .product-grid .product-image{ position: relative; }
+            .product-grid .product-image a.image{ display: block; }
+            .product-grid .product-image img{
+                width: 100%;
+                height: 180px;
+                transition: all 0.3s ease 0s;
+            }
+            .product-grid .product-image:hover img{ transform: translate(10px,-10px); }
+            .product-grid .product-sale-label{
+                color: #fff;
+                background: #1abc9c;
+                font-size: 13px;
+                text-transform: capitalize;
+                line-height: 35px;
+                width: 55px;
+                height: 35px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                animation: bg-animate 5s infinite linear;
+            }
+            .product-grid .product-links{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                opacity: 0;
+                overflow: hidden;
+                position: absolute;
+                bottom: 15px;
+                left: 20px;
+                transition: all 0.3s ease 0s;
+            }
+            .product-grid:hover .product-links{ opacity: 1; }
+            .product-grid .product-links li{
+                margin: 0 0 5px;
+                opacity: 0;
+                transform: translateX(-100%);
+                transition: all 0.3s ease 0s;
+            }
+            .product-grid:hover .product-links li:nth-child(2){ transition: all 0.3s ease 0.15s; }
+            .product-grid:hover .product-links li{
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .product-grid .product-links li a{
+                color: #fff;
+                background-color: #00b894;
+                font-size: 14px;
+                text-shadow: 0 0 3px rgba(0,0,0,0.7);
+                padding: 8px 10px;
+                display: block;
+                opacity: 0.9;
+                transition: all 0.3s ease 0s;
+                animation: bg-animate 5s infinite linear;
+            }
+            .product-grid .product-links li a:hover{
+                color: #fff;
+                box-shadow: 0 0 0 3px #fff inset;
+                opacity: 1;
+            }
+            .product-grid .product-links li a i{ margin: 0 5px 0 0; }
+            .product-grid .product-content{ padding: 15px 0 5px; }
+            .product-grid .title{
+                font-size: 17px;
+                font-weight: 400;
+                text-transform: capitalize;
+                padding: 0 10px 14px;
+                margin: 0 0 7px;
+                border-bottom: 1px solid #bb0505;
+            }
+            .product-grid .title a{
+                color: #000;
+                transition: all 0.3s ease 0s;
+            }
+            .product-grid .title a:hover{ animation: color-animate 5s infinite linear; }
+            .product-grid .price{
+                color: #1abc9c;
+                font-size: 20px;
+                font-weight: 400;
+                animation: color-animate 5s infinite linear;
+            }
+            .product-grid .price span{
+                color: #999;
+                text-decoration: line-through;
+                margin: 0 3px 0 0;
+            }
+            @keyframes color-animate{
+                0%{ color: #00b894; }
+                20%{ color: #00cec9; }
+                40%{ color: #0984e3; }
+                60%{ color: #6c5ce7; }
+                80%{ color: #e84393; }
+                100%{ color: #00b894; }
+            }
+            @keyframes bg-animate{
+                0%{ background-color: #00b894; }
+                20%{ background-color: #00cec9; }
+                40%{ background-color: #0984e3; }
+                60%{ background-color: #6c5ce7; }
+                80%{ background-color: #e84393; }
+                100%{ background-color: #00b894; }
+            }
+            @media screen and (max-width:1200px){
+                .product-grid{ margin: 0 0 30px; }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">RENTAL MOBIL CHANDRA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarsExample07">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="book.html">Book Online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pesanan.php">Cek Pesanan</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Contact Person</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown07">
+                        <li><a class="dropdown-item" href="https://wa.me/+6289649389245?text=Mantab%20Cuy...">Whatsapp</a></li>
+                        <li><a class="dropdown-item" href="#">Instagram</a></li>
+                        <li><a class="dropdown-item" href="#">Facebook</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                    <form role="search">
+                        <input class="form-control" type="search" placeholder="Cari" aria-label="Cari">
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="judul" style="margin-top: 0%;">High Class</div>
+        <div class="row" style="margin-top: 10px; margin-left: 5px; margin-right: 5px;">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="ft86.php" class="image">
+                            <img class="pic-1" src="https://www.toyota.astra.co.id/sites/default/files/2020-07/1_ice%20silver%20metallic-min.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="ft86.php">Toyota FT86</a></h3>
+                        <div class="price">Rp. 999.000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="mini.php" class="image">
+                            <img class="pic-1" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/oxford-2-door-chili-red-black-1619018954.jpg?crop=0.713xw:0.632xh;0.157xw,0.200xh&resize=1200:*">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="mini.php">Mini Cooper</a></h3>
+                        <div class="price">Rp. 1.099.000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image" style="width: 280px; margin-left: 30px;">
+                        <a href="bmw.php" class="image">
+                            <img class="pic-1" src="https://www.pngmart.com/files/3/BMW-M3-PNG-Clipart.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="bmw.php">BMW M3</a></h3>
+                        <div class="price">Rp. 1.199.000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image" style="width: 280px; margin-left: 30px;">
+                        <a href="mercy.php" class="image">
+                            <img class="pic-1" src="https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_low/v1/editorial/vhs/Mercedes-Benz-C-Class_0.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="mercy.php">Mercedes-Benz C300</a></h3>
+                        <div class="price">Rp. 899.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="judul">Medium Class</div>
+        <div class="row" style="margin-top: 10px; margin-left: 5px; margin-right: 5px;">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="input.php" class="image">
+                            <img class="pic-1" src="https://res.cloudinary.com/mufautoshow/image/upload/f_auto,f_auto/w_1200/v1621137839/moas/news/1621137832_toyota-alphard-transformers-mpv-mewah-terbaik-di-indonesia.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="input.php">Alphard</a></h3>
+                        <div class="price">Rp. 699.000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="hiace.php" class="image">
+                            <img class="pic-1" src="https://www.toyota.astra.co.id/sites/default/files/2022-04/1%20hiace%20commuter%20white.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="hiace.php">Hiace</a></h3>
+                        <div class="price">Rp. 499.000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image" style="width: 300px; margin-left: 30px;">
+                        <a href="innova.php" class="image">
+                            <img class="pic-1" src="https://www.toyota.astra.co.id/sites/default/files/2020-10/4_attitude-black.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="innova.php">Innova Venturer</a></h3>
+                        <div class="price">Rp. 399.000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image" style="width: 280px; margin-left: 30px;">
+                        <a href="pajero.php" class="image">
+                            <img class="pic-1" src="https://assets.mitsubishi-motors.co.id/products/colors/1627575723-pajero-4x4-greypng.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="pajero.php">Pajero Sport</a></h3>
+                        <div class="price">Rp. 450.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="judul">Discount</div>
+        <div class="row" style="margin-top: 10px; margin-left: 5px; margin-right: 5px; margin-bottom: 5%;">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="avanza.php" class="image">
+                            <img class="pic-1" src="https://www.toyota.astra.co.id/sites/default/files/2021-11/4-avanza-silver-mica-metallic.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="avanza.php">Avanza</a></h3>
+                        <div class="price"><span>Rp. 250.000</span>Rp. 199.000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image" style="width: 320px; margin-left: 9px;">
+                        <a href="xenia.php" class="image">
+                            <img class="pic-1" src="https://res.cloudinary.com/mufautoshow/image/upload/f_auto,f_auto/w_1200/v1639489997/moas/news/1639489991_inovasi-daihatsu-all-new-xenia-2021-next-level-mpv-indonesia.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="xenia.php">Xenia</a></h3>
+                        <div class="price"><span>Rp. 250.000</span>Rp. 199.000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image" style="width: 300px; margin-left: 30px;">
+                        <a href="xpander.php" class="image">
+                            <img class="pic-1" src="https://images.autofun.co.id/file1/62321a40beec4be3a4fe4359ddef478a_800.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="xpander.php">Xpander</a></h3>
+                        <div class="price"><span>Rp. 300.000</span>Rp. 249.000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image" style="width: 300px; margin-left: 30px;">
+                        <a href="fortuner.php" class="image">
+                            <img class="pic-1" src="https://www.toyota.astra.co.id/sites/default/files/2022-01/1-super-white.png">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="fortuner.php">Fortuner 2.8</a></h3>
+                        <div class="price"><span>Rp. 450.000</span>Rp. 350.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-bottom: 5px;">
+            Copyright &copy; <script>document.write(new Date().getFullYear())</script> By Chandra Rahmad Irfansyah
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    </body>
+</html>
